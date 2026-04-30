@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JM's Texas Craft BBQ | Lincoln Square Mall, Urbana</title>
+    <style>
+        /* --- Base Styles & Typography --- */
+        :root {
+            var(--primary-color): #ED4A4A; 
+            --dark-bg: #0a0a0a;
+            --section-bg: #1a1a1a;
+            --text-light: #f4f4f4;
+            --accent-color: #ff9800;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ED4A4A;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: #111;
+            padding: 10px 0;
+            border-bottom: 3px solid #ED4A4A;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            filter: drop-shadow(0px 0px 4px rgba(255,255,255,0.8)); 
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ED4A4A;
+        }
+
+        /* --- Layout & Sections --- */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* --- Header / Hero Section --- */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ED4A4A;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c93b3b;
+        }
+
+        /* --- Menu Section --- */
+        #menu {
+            background-color: var(--section-bg);
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dashed #444;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #bbb;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .menu-item-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ED4A4A;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        .feast-box {
+            background-color: #222;
+            border: 2px solid #ED4A4A;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .feast-box h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .feast-price {
+            font-size: 2rem;
+            color: #ED4A4A;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .table-headers {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            font-weight: bold;
+            color: #ED4A4A;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ED4A4A;
+            padding-bottom: 5px;
+        }
+
+        .table-headers span {
+            width: 70px;
+            text-align: right;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .prices-col {
+            display: flex;
+            gap: 20px;
+        }
+
+        .prices-col span {
+            width: 70px;
+            text-align: right;
+            color: #ED4A4A;
+            font-weight: bold;
+        }
+
+        .dessert-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* --- Reviews Section --- */
+        #reviews {
+            background-color: var(--dark-bg);
+            text-align: center;
+        }
+
+        .rating {
+            font-size: 2rem;
+            color: gold;
+            margin-bottom: 10px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+
+        .review-card p {
+            font-style: italic;
+        }
+
+        /* --- Location & Hours Section --- */
+        #info {
+            background-color: var(--section-bg);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .info-box {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid #ED4A4A;
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .closed {
+            color: #ED4A4A;
+            font-weight: bold;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #111;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none; /* Hide links on very small screens for this simple mockup */
+            }
+            .nav-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#"><img src="logo.png" alt="JM's Texas Craft BBQ Logo" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#info">Location</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="hero">
+        <div class="container">
+            <h1>Welcome to JM's</h1>
+            <p>Family owned Texas Craft BBQ straight from ATX to CU.</p>
+            <div class="rating">★★★★★ (5.0)</div>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </header>
+
+    <!-- MENU SECTION -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">JM's Texas Craft BBQ Plates and By the Pound</h2>
+            
+            <!-- Plates -->
+            <div class="menu-category">
+                <div class="menu-item">
+                    <div>
+                        <span class="menu-item-title">1 Meat Plate</span>
+                        <span class="menu-item-desc">Select your favorite meat and 2 sides</span>
+                    </div>
+                    <span class="menu-item-price">$16</span>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <span class="menu-item-title">2 Meat Plate</span>
+                        <span class="menu-item-desc">Select your favorite 2 meats and 2 sides</span>
+                    </div>
+                    <span class="menu-item-price">$20</span>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <span class="menu-item-title">3 Meat Plate</span>
+                        <span class="menu-item-desc">Select your favorite 3 meats and 2 sides</span>
+                    </div>
+                    <span class="menu-item-price">$24</span>
+                </div>
+            </div>
+
+            <!-- Ultimate Feast -->
+            <div class="feast-box">
+                <h3>Ultimate BBQ Feast</h3>
+                <p>Can't make the hard decisions or just don't want to? At JM's we say, "DON'T".<br>Get all our meats and sides served to you on a huge platter.</p>
+                <p><em>(Warning: will feed 4 out of town visitors or 2 hungry FIGHTING ILLINI)</em></p>
+                <span class="feast-price">$76</span>
+            </div>
+
+            <!-- Meats & Sides Grid -->
+            <div class="menu-grid">
+                
+                <!-- Meats -->
+                <div>
+                    <h3>Meats</h3>
+                    <div class="table-headers">
+                        <span>½ Pound</span>
+                        <span>Per Pound</span>
+                    </div>
+                    <div class="grid-item">
+                        <span>Brisket</span>
+                        <div class="prices-col"><span>$15</span><span>$30</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Sausage</span>
+                        <div class="prices-col"><span>$8</span><span>$16</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Pulled Pork</span>
+                        <div class="prices-col"><span>$11</span><span>$22</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Turkey Breast</span>
+                        <div class="prices-col"><span>$12</span><span>$24</span></div>
+                    </div>
+                </div>
+
+                <!-- Sides -->
+                <div>
+                    <h3>Sides</h3>
+                    <div class="table-headers">
+                        <span>8oz</span>
+                        <span>16oz</span>
+                    </div>
+                    <div class="grid-item">
+                        <span>Potato Salad</span>
+                        <div class="prices-col"><span>$6</span><span>$10</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Cole Slaw</span>
+                        <div class="prices-col"><span>$6</span><span>$10</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Mac & Cheese</span>
+                        <div class="prices-col"><span>$6</span><span>$10</span></div>
+                    </div>
+                    <div class="grid-item">
+                        <span>Borracho Beans</span>
+                        <div class="prices-col"><span>$6</span><span>$10</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dessert -->
+            <div class="dessert-section">
+                <h3>Dessert</h3>
+                <p style="font-size: 1.2rem;"><strong>Banana Cream Pudding</strong> - 8oz. - <span style="color: #ED4A4A; font-weight: bold;">$6</span></p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">What The Locals Say</h2>
+            <div class="rating">★★★★★</div>
+            <p>Rated 5.0 out of 10 Google Reviews</p>
+            <div class="review-grid">
+                <div class="review-card">
+                    <p>"Brisket looks fire！"</p>
+                </div>
+                <div class="review-card">
+                    <p>"The service was friendly and the atmosphere was very chill."</p>
+                </div>
+                <div class="review-card">
+                    <p>"My partner said the pulled pork was delicious."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO, HOURS & LOCATION -->
+    <section id="info">
+        <div class="container info-grid">
+            
+            <!-- Location & Contact -->
+            <div class="info-box">
+                <h3>Find Us</h3>
+                <p><strong>Location:</strong><br>
+                    Lincoln Square Mall<br>
+                    300 S Broadway Ave<br>
+                    Urbana, IL 61801
+                </p>
+                <p><strong>Phone:</strong><br>
+                    <a href="tel:7373818678">(737) 381-8678</a>
+                </p>
+                <br>
+                <h3>Our Roots</h3>
+                <p>We are a family-owned joint bringing authentic Texas Craft BBQ straight from ATX to CU. Come see us at the Lincoln Square Mall! Come for the fire brisket and delicious pulled pork, stay for the friendly service and chill atmosphere.</p>
+            </div>
+
+            <!-- Hours of Operation -->
+            <div class="info-box">
+                <h3>Hours of Operation</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span class="closed">Closed</span></li>
+                    <li><span>Tuesday</span> <span>11:00 AM – 7:00 PM</span></li>
+                    <li><span>Wednesday</span> <span>11:00 AM – 7:00 PM</span></li>
+                    <li><span>Thursday</span> <span>11:00 AM – 7:00 PM</span></li>
+                    <li><span>Friday</span> <span>11:00 AM – 7:00 PM</span></li>
+                    <li><span>Saturday</span> <span>11:00 AM – 7:00 PM</span></li>
+                    <li><span>Sunday</span> <span class="closed">Closed</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 JM's Texas Craft BBQ. All Rights Reserved.</p>
+            <p>Lincoln Square Mall | 300 S Broadway Ave, Urbana, IL 61801 | (737) 381-8678</p>
+        </div>
+    </footer>
+
+</body>
+</html>
