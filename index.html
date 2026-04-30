@@ -107,15 +107,19 @@
             align-items: center;
         }
 
-        .logo {
-            max-width: 140px;
-            height: auto;
-            transition: var(--transition);
-        }
+       .logo {
+    max-width: 140px;
+    height: auto;
+    transition: var(--transition);
+    background-color: #ffffff; /* Adds the white background */
+    padding: 8px 16px; /* Adds space around the SVG so it touches the edges */
+    border-radius: 8px; /* Smooth, sleek rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slight shadow to make it pop */
+}
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+.logo:hover {
+    transform: scale(1.05);
+}
 
         .nav-links {
             list-style: none;
